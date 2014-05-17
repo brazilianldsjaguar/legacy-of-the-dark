@@ -228,8 +228,9 @@ namespace DikuSharp.Mud
                     }                   
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("Exception on GetCommands(" + e.Message + ")");
             }
             return list;
         }
