@@ -12,7 +12,7 @@ namespace DikuSharp.Mud.Logic
 {
     public static class RoomLogic
     {
-        public static string GetRoomInformation( Room room, PlayerCharacter looker = null )
+        public static string GetRoomInformation( Room room, Character looker = null )
         {
             StringBuilder sb = new StringBuilder( );
             sb.AppendLine( room.Name );
@@ -20,8 +20,9 @@ namespace DikuSharp.Mud.Logic
             {
                 sb.AppendLine( string.Format( "  #B{0}#x", descLine ) );
             }
-            foreach ( PlayerCharacter ch in room.Characters )
+            foreach ( Character ch in room.Characters )
             {
+                PlayerController PC = (PlayerController)ch.Controller;
                 if ( looker != null )
                 {
                     if ( looker == ch )
@@ -30,7 +31,7 @@ namespace DikuSharp.Mud.Logic
                     }
                 }
                 //If 
-                if ( !ch.IsPlaying || ( ch.IsPlaying && ch.Account.CurrentCharacter != ch ) )
+                if (!PC.IsPlaying || (PC.IsPlaying && PC.Account.CurrentCharacter != ch))
                 {
                     continue;
                 }
@@ -48,7 +49,7 @@ namespace DikuSharp.Mud.Logic
             return sb.ToString( );
         }
 
-        public static void MoveCharacterToRoom( PlayerCharacter ch, Room fromRoom, Room toRoom )
+        public static void MoveCharacterToRoom( Character ch, Room fromRoom, Room toRoom )
         {
             //This takes care of new characters and those logging in
             if ( fromRoom != null )

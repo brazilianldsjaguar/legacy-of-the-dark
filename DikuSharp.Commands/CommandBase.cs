@@ -15,10 +15,11 @@ namespace DikuSharp.Commands
 
         public virtual void Do( object source, List<string> args ) 
         {
-            if ( source is PlayerCharacter )
+            if ( source is Character )
             {
-                PlayerCharacter ch = source as PlayerCharacter;
-                ch.Send( "Huh?" );
+                Character ch = source as Character;
+                PlayerController pc = (PlayerController)ch.Controller;
+                pc.Send( "Huh?" );
             }
         }
     }

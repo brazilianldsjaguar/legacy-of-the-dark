@@ -19,9 +19,10 @@ namespace DikuSharp.Commands.Common
 
         public override void Do( object source, List<string> args )
         {
-            if ( source is PlayerCharacter )
+            if ( source is Character )
             {
-                PlayerCharacter ch = source as PlayerCharacter;
+                Character ch = source as Character;
+
                 bool argFound = true;
 
                 if ( args.Count > 0 )
@@ -48,24 +49,26 @@ namespace DikuSharp.Commands.Common
             }
         }
 
-        private void SendConfigOptions( PlayerCharacter ch )
+        private void SendConfigOptions( Character ch )
         {
+            PlayerController pc = (PlayerController)ch.Controller;
             StringBuilder sb = new StringBuilder( );
 
             sb.AppendLine( "-------------------------------------------------" );
-            sb.AppendLine( string.Format( "{0,-20} {1,-30}", ( ch.ConfigColor ) ? "#CCOLOR#x" : "#RCOLOR#x", "You " + ( ( ch.ConfigColor ) ? "#Cdo#x" : "#Rdon't#x" ) + " see colors." ) );
-            sb.AppendLine( string.Format( "{0,-20} {1,-30}", ( ch.ConfigColor ) ? "#CCHAT#x" : "#RCHAT#x", "You " + ( ( ch.ConfigColor ) ? "#Cdo#x" : "#Rdon't#x" ) + " see the CHAT channel." ) );
+            sb.AppendLine( string.Format( "{0,-20} {1,-30}", ( pc.ConfigColor ) ? "#CCOLOR#x" : "#RCOLOR#x", "You " + ( ( pc.ConfigColor ) ? "#Cdo#x" : "#Rdon't#x" ) + " see colors." ) );
+            sb.AppendLine( string.Format( "{0,-20} {1,-30}", ( pc.ConfigColor ) ? "#CCHAT#x" : "#RCHAT#x", "You " + ( ( pc.ConfigColor ) ? "#Cdo#x" : "#Rdon't#x" ) + " see the CHAT channel." ) );
             sb.AppendLine( "-------------------------------------------------" );
             sb.AppendLine( "Syntax: config <option>" );
 
-            ch.Send( sb.ToString( ) );
+            pc.Send( sb.ToString( ) );
         }
 
-        private void ToggleConfigColor( PlayerCharacter ch )
+        private void ToggleConfigColor( Character ch )
         {
-            ch.ConfigColor = !ch.ConfigColor;
-            string message = ( ch.ConfigColor ) ? "#Con#x" : "off";
-            ch.Send( "ANSI Color has been turned {0}.", message );
+            PlayerController pc = (PlayerController)ch.Controller;
+            pc.ConfigColor = !pc.ConfigColor;
+            string message = ( pc.ConfigColor ) ? "#Con#x" : "off";
+            pc.Send( "ANSI Color has been turned {0}.", message );
         }
     }
 }

@@ -23,9 +23,10 @@ namespace DikuSharp.Commands.Building
 
         public override void Do( object source, List<string> args )
         {
-            if ( source is PlayerCharacter )
+            if ( source is Character )
             {
-                PlayerCharacter ch = source as PlayerCharacter;
+                Character ch = source as Character;
+                PlayerController pc = (PlayerController)ch.Controller;
                 bool argFound = true;
 
                 if ( args.Count > 0 )
@@ -50,19 +51,20 @@ namespace DikuSharp.Commands.Building
 
                 if ( !argFound )
                 {
-                    ch.Send( "Syntax: areas [list/create]" );
+                    pc.Send("Syntax: areas [list/create]");
                 }
                     
                 
             }
         }
 
-        private void CreateArea( PlayerCharacter ch, List<string> args )
+        private void CreateArea( Character ch, List<string> args )
         {
+            PlayerController pc = (PlayerController)ch.Controller;
             //This is a sub-command, so we start with args[1]
             if ( args.Count < 2 )
             {
-                ch.Send( "Syntax: areas create <area name>" );
+                pc.Send( "Syntax: areas create <area name>" );
                 return;
             }
 
@@ -70,30 +72,31 @@ namespace DikuSharp.Commands.Building
 
             if ( Game.AreaExists( areaName ) )
             {
-                ch.Send( "That area already exists! Choose a different name." );
+                pc.Send( "That area already exists! Choose a different name." );
                 return;
             }
 
-            Game.Areas.Add( new Area( ) { Name = areaName, Author = ch.Account.AccountName } );
+            Game.Areas.Add( new Area( ) { Name = areaName, Author = pc.Account.AccountName } );
             //Attempt to save areas
-            ch.Send( areaName + " area created. Attempting to save ..." );
+            pc.Send( areaName + " area created. Attempting to save ..." );
             try
             {
                 AreaData.SaveAreas( Game.Areas );
             }
             catch ( Exception e )
             {
-                ch.Send( "There was a problem. Check out this message:" );
-                ch.Send( e.Message );
+                pc.Send( "There was a problem. Check out this message:" );
+                pc.Send( e.Message );
             }
         }
 
-        private void SendAreaList( PlayerCharacter ch )
+        private void SendAreaList( Character ch )
         {
-            ch.Send( "{0,-15} {1,-10}", "Area Name", "Author" );
+            PlayerController pc = (PlayerController)ch.Controller;
+            pc.Send( "{0,-15} {1,-10}", "Area Name", "Author" );
             foreach ( Area a in Game.Areas )
             {
-                ch.Send( "{0,-15} {1,-10}", a.Name, a.Author );
+                pc.Send( "{0,-15} {1,-10}", a.Name, a.Author );
             }
         }
     }

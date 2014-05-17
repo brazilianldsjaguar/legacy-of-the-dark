@@ -22,7 +22,8 @@ namespace DikuSharp.Mud
         public static List<Room> Rooms = Game.GetRooms( );
         public static List<Class> Classes = ClassData.LoadClasses( );
         public static List<Race> Races = RaceData.LoadRaces( );
-        public static List<PlayerCharacter> PlayerCharacters = Game.GetPlayerCharacters( );
+        public static List<Ancestry> Ancestries = AncestryData.LoadAncestries();
+        public static List<Character> PlayerCharacters = Game.GetPlayerCharacters( );
         public static List<ICommand> Commands { get { return commands; } }
         private static List<ICommand> commands = Game.GetCommands( ).OrderBy( x => x.Priority ).ToList( );
         
@@ -31,9 +32,9 @@ namespace DikuSharp.Mud
         /// not only accounts aren't duplicated, but characters aren't either.
         /// </summary>
         /// <returns></returns>
-        private static List<PlayerCharacter> GetPlayerCharacters( )
+        private static List<Character> GetPlayerCharacters( )
         {
-            List<PlayerCharacter> players = new List<PlayerCharacter>( );
+            List<Character> players = new List<Character>( );
             if ( Game.Accounts != null )
             {
                 foreach ( Account account in Game.Accounts )
@@ -93,6 +94,16 @@ namespace DikuSharp.Mud
         }
 
         /// <summary>
+        /// Get a specific ancestry from the list of ancestries, based on a ancestryname string.
+        /// </summary>
+        /// <param name="raceName">A string representing the name of the race</param>
+        /// <returns>A <see cref="Race"/> object</returns>
+        internal static Ancestry GetAncestry(string ancestryName)
+        {
+            return Ancestries.Find(r => r.Name.ToLower() == ancestryName.ToLower());
+        }
+
+        /// <summary>
         /// Get a specific class from the list of classes, based on a classname string.
         /// </summary>
         /// <param name="className">A string representing the name of the class</param>
@@ -130,6 +141,16 @@ namespace DikuSharp.Mud
         internal static bool RaceExists( string raceName )
         {
             return ( Races.FindAll( r => r.Name.ToLower( ) == raceName.ToLower( ) ).Count > 0 );
+        }
+
+        /// <summary>
+        /// Checks to see if a ancestry exists.
+        /// </summary>
+        /// <param name="raceName">A string of the name of the ancestry. Case insensitive.</param>
+        /// <returns>True if exists, false otherwise.</returns>
+        internal static bool AncestryExists(string ancestryName)
+        {
+            return (Ancestries.FindAll(r => r.Name.ToLower() == ancestryName.ToLower()).Count > 0);
         }
 
         /// <summary>

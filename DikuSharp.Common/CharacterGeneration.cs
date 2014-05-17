@@ -28,7 +28,7 @@ namespace DikuSharp.Common
             }
             else
             {
-                foreach ( PlayerCharacter pc in connection.Account.Characters )
+                foreach ( Character pc in connection.Account.Characters )
                 {
                     sb.AppendLine( string.Format( "|  {0,-15} {1,-14} {2,-14} |", pc.Name, pc.Race.Name, pc.Class.Name ) );
                 }
@@ -56,6 +56,25 @@ namespace DikuSharp.Common
             sb.Append( "'------------------------------------------------'" );
 
             return sb.ToString( );
+        }
+
+        /// <summary>
+        /// Generate the ancestry selection screen for chargen.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetNewCharacterAncestryScreen(List<Ancestry> Ancestries)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(".------- Ancestries -----------------------------.");
+            sb.AppendLine("| Choose an ancestry to play:                    |");
+            sb.AppendLine("+------------------------------------------------+");
+            foreach (Ancestry ancestry in Ancestries)
+            {
+                sb.AppendLine(string.Format("|  {0,-45} |", ancestry.Name));
+            }
+            sb.Append("'------------------------------------------------'");
+
+            return sb.ToString();
         }
 
         /// <summary>

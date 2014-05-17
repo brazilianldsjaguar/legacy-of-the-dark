@@ -18,12 +18,12 @@ namespace DikuSharp.Common
         public string AccountName { get; set; }
         [Required]
         public string Password { get; set; }
-        public virtual IList<PlayerCharacter> Characters { get; set; }
+        public virtual IList<Character> Characters { get; set; }
         
         [NotMapped]
         public PlayerConnection CurrentConnection { get; set; }
         [NotMapped]
-        public PlayerCharacter CurrentCharacter { get; set; }
+        public Character CurrentCharacter { get; set; }
 
         #region Equal Overrides
 

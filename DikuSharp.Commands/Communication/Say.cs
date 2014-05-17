@@ -19,12 +19,13 @@ namespace DikuSharp.Commands.Communication
 
         public override void Do( object source, List<string> args )
         {
-            if ( source is PlayerCharacter )
+            if ( source is Character )
             {
-                PlayerCharacter ch = source as PlayerCharacter;
+                Character ch = source as Character;
+                PlayerController pc = (PlayerController)ch.Controller;
                 string statement = string.Join( " ", args.ToArray( ) );
-                ch.Send( "You say, '#G{0}#x'", statement );
-                ch.SendToRoom( "{0} says '#G{1}#x'", ch.Name, statement );
+                pc.Send("You say, '#G{0}#x'", statement);
+                ch.SendToRoom("{0} says '#G{1}#x'", ch.Name, statement);
             }
         }
     }

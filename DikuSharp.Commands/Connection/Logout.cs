@@ -20,17 +20,18 @@ namespace DikuSharp.Commands.Connection
 
         public override void Do( object source, List<string> target )
         {
-            if ( source is PlayerCharacter )
+            if ( source is Character )
             {
-                PlayerCharacter ch = source as PlayerCharacter;
+                Character ch = source as Character;
+                PlayerController pc = (PlayerController)ch.Controller;
 
                 //Send a message to the room they're in
-                ch.Send( "You leave the game and are being directed to the login screen." );
+                pc.Send("You leave the game and are being directed to the login screen.");
                 ch.SendToRoom( "{0} leaves the game.", ch.Name );
 
                 //Send them back to the account screen
-                ch.Send( CharacterGeneration.GetAccountScreen( ch.Account.CurrentConnection ) );
-                ch.Account.CurrentConnection.CurrentConnectionState = ConnectionState.LoggedIn;
+                pc.Send(CharacterGeneration.GetAccountScreen(pc.Account.CurrentConnection));
+                pc.Account.CurrentConnection.CurrentConnectionState = ConnectionState.LoggedIn;
             }
         }
     }

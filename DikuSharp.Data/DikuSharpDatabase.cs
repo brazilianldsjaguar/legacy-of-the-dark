@@ -24,11 +24,12 @@ namespace DikuSharp.Data
         }
 
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<PlayerCharacter> Characters { get; set; }
+        public DbSet<Character> Characters { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Area> Areas { get; set; }
         public DbSet<Race> Races { get; set; }
+        public DbSet<Ancestry> Ancestries { get; set; }
         public DbSet<Class> Classes { get; set; }
 
         protected override void OnModelCreating( DbModelBuilder modelBuilder )

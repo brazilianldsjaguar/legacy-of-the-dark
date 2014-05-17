@@ -8,14 +8,14 @@ namespace DikuSharp.Mud.Logic
 {
     public static class AccountLogic
     {
-        public static PlayerCharacter FindCharacter( Account account, Predicate<PlayerCharacter> match )
+        public static Character FindCharacter( Account account, Predicate<Character> match )
         {
-            return ((List<PlayerCharacter>)account.Characters).Find( match );
+            return ((List<Character>)account.Characters).Find( match );
         }
 
         public static bool CharacterExists( Account account, string characterName )
         {
-            return ( ((List<PlayerCharacter>)account.Characters).FindAll( c => c.Name.ToLower( ) == characterName.ToLower( ) ).Count > 0 );
+            return ( ((List<Character>)account.Characters).FindAll( c => c.Name.ToLower( ) == characterName.ToLower( ) ).Count > 0 );
         }
 
         public static bool IsValidAccountName( string line )

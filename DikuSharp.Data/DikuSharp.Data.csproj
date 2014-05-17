@@ -58,6 +58,7 @@
     <Compile Include="AccountData.cs" />
     <Compile Include="AreaData.cs" />
     <Compile Include="BaseData.cs" />
+    <Compile Include="AncestryData.cs" />
     <Compile Include="ClassData.cs" />
     <Compile Include="DikuSharpDatabase.cs" />
     <Compile Include="Migrations\201405130210160_InitialCreate.cs" />
@@ -103,18 +104,23 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405130210160_InitialCreate.resx">
       <DependentUpon>201405130210160_InitialCreate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405130216060_ItemRoomRelationship.resx">
       <DependentUpon>201405130216060_ItemRoomRelationship.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405130217461_ItemRoomRelationship2.resx">
       <DependentUpon>201405130217461_ItemRoomRelationship2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405130218288_ItemRoomRelationship3.resx">
       <DependentUpon>201405130218288_ItemRoomRelationship3.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405131606561_AddedConfigColor.resx">
       <DependentUpon>201405131606561_AddedConfigColor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

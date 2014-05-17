@@ -50,6 +50,9 @@ namespace DikuSharp.Mud
                 case ConnectionState.CharacterCreationClass:
                     ParseCharacterCreationClass( connection, line );
                     break;
+                case ConnectionState.CharacterCreationAncestry:
+                    ParseCharacterCreationAncestry(connection, line);
+                    break;
                 case ConnectionState.Playing: //They're in the game
                     ParseCommand( connection, line );
                     break;
@@ -212,7 +215,7 @@ namespace DikuSharp.Mud
             {
                 if ( AccountLogic.CharacterExists( connection.Account, line ) )
                 {
-                    PlayerCharacter pc = AccountLogic.FindCharacter( connection.Account, c => c.Name.ToLower( ) == line.ToLower( ) );
+                    Character pc = AccountLogic.FindCharacter( connection.Account, c => c.Name.ToLower( ) == line.ToLower( ) );
                     connection.Account.CurrentCharacter = pc;                    
                     //just in case ...
                     if ( pc.CurrentRoom == null )
@@ -264,7 +267,7 @@ namespace DikuSharp.Mud
                 }
                 else
                 {
-                    PlayerCharacter pc = AccountData.CreatePlayerCharacter( connection.Account, line.ToTitleCase( ) );
+                    Character pc = AccountData.CreatePlayerCharacter( connection.Account, line.ToTitleCase( ) );
                     // CharacterFactory.CreatePlayerCharacter( connection.Account, line.ToTitleCase( ) );
                     //Put them in the starting room
                     RoomLogic.MoveCharacterToRoom( pc, null, Game.GetRoomById( int.Parse( ServerConfiguration.ReadAppConfig( "StartingRoom" ) ) ) );                    
@@ -294,6 +297,27 @@ namespace DikuSharp.Mud
                 connection.Account.CurrentCharacter.Race = Game.GetRace( line );
                 connection.Send( CharacterGeneration.GetNewCharacterClassScreen( Game.Classes ) );
                 connection.CurrentConnectionState = ConnectionState.CharacterCreationClass;
+            }
+        }
+
+        /// <summary>
+        /// Parses input from ancestry selection in chargen.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="line"></param>
+        private static void ParseCharacterCreationAncestry(PlayerConnection connection, string line)
+        {
+            //check to see if the Ancestry even is an option
+            if (!Game.AncestryExists(line))
+            {
+                connection.Send("That's not a valid ancestry option.");
+                connection.Send(CharacterGeneration.GetNewCharacterAncestryScreen(Game.Ancestries));
+            }
+            else
+            {
+                connection.Account.CurrentCharacter.Ancestry = Game.GetAncestry(line);
+                connection.Send(CharacterGeneration.GetNewCharacterAncestryScreen(Game.Ancestries));
+                connection.CurrentConnectionState = ConnectionState.CharacterCreationAncestry;
             }
         }
 

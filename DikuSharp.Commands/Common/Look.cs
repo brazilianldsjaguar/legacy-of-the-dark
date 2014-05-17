@@ -21,10 +21,11 @@ namespace DikuSharp.Commands.Common
 
         public override void Do( object source, List<string> target )
         {
-            if ( source is PlayerCharacter )
+            if ( source is Controller )
             {
-                PlayerCharacter ch = source as PlayerCharacter;
-                ch.Send( RoomLogic.GetRoomInformation( ch.CurrentRoom, looker: ch ) );
+                Character ch = source as Character;
+                PlayerController pc = (PlayerController)ch.Controller;
+                pc.Send(RoomLogic.GetRoomInformation(ch.CurrentRoom, looker: ch));
             }
         }
     }

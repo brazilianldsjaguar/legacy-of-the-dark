@@ -19,10 +19,10 @@ namespace DikuSharp.Common.Areas
         public string Name { get; set; }
         public string Description { get; set; }
 
-        private ICollection<PlayerCharacter> _characters;
-        public virtual ICollection<PlayerCharacter> Characters
+        private ICollection<Character> _characters;
+        public virtual ICollection<Character> Characters
         {
-            get { return _characters ?? ( _characters = new List<PlayerCharacter>( ) ); }
+            get { return _characters ?? ( _characters = new List<Character>( ) ); }
             set { _characters = value; }
         }
 

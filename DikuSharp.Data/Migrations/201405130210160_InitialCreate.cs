@@ -23,6 +23,7 @@ namespace DikuSharp.Data.Migrations
                 {
                     ID = c.Int( nullable: false, identity: true ),
                     AccountID = c.Int( nullable: false ),
+                    AncestryID = c.Int(nullable: false),
                     ClassID = c.Int( nullable: false ),
                     RaceID = c.Int( nullable: false ),
                     RoomID = c.Int( nullable: false ),
@@ -34,10 +35,21 @@ namespace DikuSharp.Data.Migrations
                 .ForeignKey( "dbo.Class", t => t.ClassID, cascadeDelete: true )
                 .ForeignKey( "dbo.Room", t => t.RoomID, cascadeDelete: true )
                 .ForeignKey( "dbo.Race", t => t.RaceID, cascadeDelete: true )
+                .ForeignKey("dbo.Ancestry", t => t.AncestryID, cascadeDelete: true)
                 .Index( t => t.AccountID )
                 .Index( t => t.ClassID )
                 .Index( t => t.RaceID )
+                .Index(t => t.AncestryID)
                 .Index( t => t.RoomID );
+
+            CreateTable(
+                "dbo.Ancestry",
+                c => new
+                {
+                    ID = c.Int(nullable: false, identity: true),
+                    Name = c.String(maxLength: 4000),
+                })
+                .PrimaryKey(t => t.ID);
 
             CreateTable(
                 "dbo.Class",
@@ -110,6 +122,7 @@ namespace DikuSharp.Data.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Ancestry", "AncestryID", "dbo.Ancestry");
             DropForeignKey( "dbo.PlayerCharacter", "RaceID", "dbo.Race" );
             DropForeignKey( "dbo.ItemPlayerCharacter", "PlayerCharacter_ID", "dbo.PlayerCharacter" );
             DropForeignKey( "dbo.ItemPlayerCharacter", "Item_ID", "dbo.Item" );
@@ -122,10 +135,12 @@ namespace DikuSharp.Data.Migrations
             DropIndex( "dbo.Room", new[ ] { "AreaID" } );
             DropIndex( "dbo.PlayerCharacter", new[ ] { "RoomID" } );
             DropIndex( "dbo.PlayerCharacter", new[ ] { "RaceID" } );
+            DropIndex("dbo.PlayerCharacter", new[] { "AncestryID" });
             DropIndex( "dbo.PlayerCharacter", new[ ] { "ClassID" } );
             DropIndex( "dbo.PlayerCharacter", new[ ] { "AccountID" } );
             DropTable( "dbo.ItemPlayerCharacter" );
             DropTable( "dbo.Race" );
+            DropTable("dbo.Ancestry");
             DropTable( "dbo.Item" );
             DropTable( "dbo.Area" );
             DropTable( "dbo.Room" );

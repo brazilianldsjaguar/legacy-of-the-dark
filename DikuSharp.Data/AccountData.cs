@@ -19,7 +19,7 @@ namespace DikuSharp.Data
 
         public static Account InitializeAccount( string name )
         {
-            return new Account( ) { AccountName = name, Characters = new List<PlayerCharacter>( ) };
+            return new Account( ) { AccountName = name, Characters = new List<Character>( ) };
         }
 
         public static List<Account> LoadAccounts( )
@@ -67,10 +67,10 @@ namespace DikuSharp.Data
             return ServerConfiguration.ReadAppConfig( "AccountPath" );
         }
 
-        public static PlayerCharacter CreatePlayerCharacter( Account account, string name )
+        public static Character CreatePlayerCharacter( Account account, string name )
         {
             account = BaseData.GetDatabase( ).Accounts.Find( account.ID );
-            PlayerCharacter pc = new PlayerCharacter( );// BaseData.GetDatabase( ).Characters.Create( );
+            Character pc = new Character( );// BaseData.GetDatabase( ).Characters.Create( );
             pc.Name = name;
 
             //Just some defaults to satisfy foreign keys

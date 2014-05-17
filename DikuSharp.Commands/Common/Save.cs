@@ -21,11 +21,12 @@ namespace DikuSharp.Commands.Common
 
         public override void Do( object source, List<string> args )
         {
-            if ( source is DikuSharp.Common.Characters.PlayerCharacter )
+            if ( source is DikuSharp.Common.Characters.Character )
             {
-                DikuSharp.Common.Characters.PlayerCharacter ch = source as DikuSharp.Common.Characters.PlayerCharacter;
-                AccountData.SaveAccount( ch.Account );
-                ch.Send( "Saved." );
+                DikuSharp.Common.Characters.Character ch = source as DikuSharp.Common.Characters.Character;
+                PlayerController pc = (PlayerController)ch.Controller;
+                AccountData.SaveAccount( pc.Account );
+                pc.Send( "Saved." );
             }
         }
     }

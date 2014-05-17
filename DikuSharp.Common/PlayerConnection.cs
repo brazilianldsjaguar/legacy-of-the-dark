@@ -22,7 +22,7 @@ namespace DikuSharp.Common
 
         #region Shortcut properties
 
-        public PlayerCharacter CurrentCharacter { 
+        public Character CurrentCharacter { 
             get { return Account.CurrentCharacter; }
             set { Account.CurrentCharacter = value; }
         }
@@ -58,9 +58,10 @@ namespace DikuSharp.Common
         public void Send( string message )
         {
             //only colorize if they've got an active character
+            PlayerController controller = (PlayerController)CurrentCharacter.Controller;
             if ( Account != null && Account.CurrentCharacter != null )
             {
-                message = Colorizer.Colorize( message, CurrentCharacter.ConfigColor );
+                message = Colorizer.Colorize( message, controller.ConfigColor );
             }
             Writer.WriteLine( message );
         }

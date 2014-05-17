@@ -19,7 +19,7 @@ namespace DikuSharp.Common.Items
         public string LongDescription { get; set; }
         public bool IsEquipped { get; set; }
 
-        public virtual ICollection<PlayerCharacter> Characters { get; set; }
+        public virtual ICollection<Character> Characters { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
     }
 }
