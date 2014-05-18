@@ -25,6 +25,7 @@ namespace DikuSharp.Mud
         public static List<Ancestry> Ancestries = AncestryData.LoadAncestries();
         public static List<Starsign> Starsigns = StarsignData.LoadStarsigns();
         public static List<Character> PlayerCharacters = Game.GetPlayerCharacters( );
+        public static List<Material> Materials = MaterialData.LoadMaterials();
         public static List<ICommand> Commands { get { return commands; } }
         private static List<ICommand> commands = Game.GetCommands( ).OrderBy( x => x.Priority ).ToList( );
         
