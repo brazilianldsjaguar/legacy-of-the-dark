@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="CharacterGeneration.cs" />
+    <Compile Include="Characters\AIController.cs" />
+    <Compile Include="Characters\PlayerController.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Colorizer.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -65,7 +67,6 @@
     <Compile Include="PlayerConnection.cs" />
     <Compile Include="Areas\Area.cs" />
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="Characters\CharacterFactory.cs" />
     <Compile Include="ConnectionState.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Items\Item.cs" />

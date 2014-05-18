@@ -17,8 +17,8 @@ namespace DikuSharp.Data
         public DikuSharpDatabase( )
             : base( "DikuSharpDatabase" )
         {
-            Database.SetInitializer<DikuSharpDatabase>( new MigrateDatabaseToLatestVersion<DikuSharpDatabase, Migrations.Configuration>( ) );
-            //Database.SetInitializer<DikuSharpDatabase>( new DropCreateDatabaseAlways<DikuSharpDatabase>( ) );
+            //Database.SetInitializer<DikuSharpDatabase>( new MigrateDatabaseToLatestVersion<DikuSharpDatabase, Migrations.Configuration>( ) );
+            Database.SetInitializer<DikuSharpDatabase>( new DropCreateDatabaseAlways<DikuSharpDatabase>( ) );
             
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine( s );
         }

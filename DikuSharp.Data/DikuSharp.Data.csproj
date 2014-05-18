@@ -60,27 +60,6 @@
     <Compile Include="AncestryData.cs" />
     <Compile Include="ClassData.cs" />
     <Compile Include="DikuSharpDatabase.cs" />
-    <Compile Include="Migrations\201405130210160_InitialCreate.cs" />
-    <Compile Include="Migrations\201405130210160_InitialCreate.Designer.cs">
-      <DependentUpon>201405130210160_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405130216060_ItemRoomRelationship.cs" />
-    <Compile Include="Migrations\201405130216060_ItemRoomRelationship.Designer.cs">
-      <DependentUpon>201405130216060_ItemRoomRelationship.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405130217461_ItemRoomRelationship2.cs" />
-    <Compile Include="Migrations\201405130217461_ItemRoomRelationship2.Designer.cs">
-      <DependentUpon>201405130217461_ItemRoomRelationship2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405130218288_ItemRoomRelationship3.cs" />
-    <Compile Include="Migrations\201405130218288_ItemRoomRelationship3.Designer.cs">
-      <DependentUpon>201405130218288_ItemRoomRelationship3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405131606561_AddedConfigColor.cs" />
-    <Compile Include="Migrations\201405131606561_AddedConfigColor.Designer.cs">
-      <DependentUpon>201405131606561_AddedConfigColor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RaceData.cs" />
     <Compile Include="ServerConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,45 +79,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405130210160_InitialCreate.resx">
-      <DependentUpon>201405130210160_InitialCreate.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405130216060_ItemRoomRelationship.resx">
-      <DependentUpon>201405130216060_ItemRoomRelationship.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405130217461_ItemRoomRelationship2.resx">
-      <DependentUpon>201405130217461_ItemRoomRelationship2.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405130218288_ItemRoomRelationship3.resx">
-      <DependentUpon>201405130218288_ItemRoomRelationship3.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405131606561_AddedConfigColor.resx">
-      <DependentUpon>201405131606561_AddedConfigColor.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DikuSharpDatabase.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
     if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
     xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
     if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
-    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"
-
-echo F|xcopy /y "$(TargetDir)DikuSharpDatabase.sdf" "$(SolutionDir)DikuSharp.Server\$(OutDir)DikuSharpDatabase.sdf"</PostBuildEvent>
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
