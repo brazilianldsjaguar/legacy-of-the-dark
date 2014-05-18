@@ -10,21 +10,25 @@ namespace DikuSharp.Common.Characters
 {
     public class Character
     {
-        public string Name { get; set; }
-        public int ClassID { get; set; }
-        public string Description { get; set; }
         public int ID { get; set; }
-        public List<Item> Inventory { get; set; }
-        public List<Item> Equipment { get; set; }
-        public Room CurrentRoom { get; set; }
-        public Controller Controller { get; set; }
-        public int AncestryID { get; set; }
-        public int RaceID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public int RoomID { get; set; }
-        public virtual Class Class { get; set; }
+        public virtual Room CurrentRoom { get; set; }
+        public int ControllerID { get; set; }
+        public virtual Controller Controller { get; set; }
+        public int AncestryID { get; set; }
         public virtual Ancestry Ancestry { get; set; }
+        public int RaceID { get; set; }
         public virtual Race Race { get; set; }
+        public int ClassID { get; set; }
+        public virtual Class Class { get; set; }
         public virtual ICollection<Item> Items { get; set; }
+
+        /// <summary>
+        /// Get a string representation of the character.
+        /// </summary>
+        /// <returns>The name of the character.</returns>
         public override string ToString( )
         {
             return Name;
