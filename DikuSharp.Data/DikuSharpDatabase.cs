@@ -31,6 +31,7 @@ namespace DikuSharp.Data
         public DbSet<Area> Areas { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<Ancestry> Ancestries { get; set; }
+        public DbSet<Starsign> Starsigns { get; set; }
         public DbSet<Class> Classes { get; set; }
 
         protected override void OnModelCreating( DbModelBuilder modelBuilder )

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Starsign.cs" />
     <Compile Include="CharacterGeneration.cs" />
     <Compile Include="Characters\AIController.cs" />
     <Compile Include="Characters\PlayerController.cs" />

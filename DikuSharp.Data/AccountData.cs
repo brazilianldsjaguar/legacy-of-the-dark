@@ -77,6 +77,7 @@ namespace DikuSharp.Data
             pc.Class = ClassData.GetDatabase( ).Classes.FirstOrDefault( );
             pc.Race = RaceData.GetDatabase( ).Races.FirstOrDefault( );
             pc.Ancestry = AncestryData.GetDatabase( ).Ancestries.FirstOrDefault( );
+            pc.Starsign = StarsignData.GetDatabase( ).Starsigns.FirstOrDefault();
             pc.CurrentRoom = BaseData.GetDatabase( ).Rooms.FirstOrDefault( );
             pc.Controller = new PlayerController( ) { Account = account };
             account.Characters.Add( pc );

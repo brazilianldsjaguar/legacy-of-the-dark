@@ -23,6 +23,7 @@ namespace DikuSharp.Mud
         public static List<Class> Classes = ClassData.LoadClasses( );
         public static List<Race> Races = RaceData.LoadRaces( );
         public static List<Ancestry> Ancestries = AncestryData.LoadAncestries();
+        public static List<Starsign> Starsigns = StarsignData.LoadStarsigns();
         public static List<Character> PlayerCharacters = Game.GetPlayerCharacters( );
         public static List<ICommand> Commands { get { return commands; } }
         private static List<ICommand> commands = Game.GetCommands( ).OrderBy( x => x.Priority ).ToList( );
@@ -96,11 +97,21 @@ namespace DikuSharp.Mud
         /// <summary>
         /// Get a specific ancestry from the list of ancestries, based on a ancestryname string.
         /// </summary>
-        /// <param name="raceName">A string representing the name of the race</param>
+        /// <param name="raceName">A string representing the name of the ancestry</param>
         /// <returns>A <see cref="Race"/> object</returns>
         internal static Ancestry GetAncestry(string ancestryName)
         {
             return Ancestries.Find(r => r.Name.ToLower() == ancestryName.ToLower());
+        }
+
+        /// <summary>
+        /// Get a specific starsign from the list of starsigns, based on a starsignname string.
+        /// </summary>
+        /// <param name="raceName">A string representing the name of the starsign</param>
+        /// <returns>A <see cref="Race"/> object</returns>
+        internal static Starsign GetStarsign(string starsignName)
+        {
+            return Starsigns.Find(r => r.Name.ToLower() == starsignName.ToLower());
         }
 
         /// <summary>
@@ -151,6 +162,16 @@ namespace DikuSharp.Mud
         internal static bool AncestryExists(string ancestryName)
         {
             return (Ancestries.FindAll(r => r.Name.ToLower() == ancestryName.ToLower()).Count > 0);
+        }
+
+        /// <summary>
+        /// Checks to see if a starsign exists.
+        /// </summary>
+        /// <param name="raceName">A string of the name of the starsign. Case insensitive.</param>
+        /// <returns>True if exists, false otherwise.</returns>
+        internal static bool StarsignExists(string starsignName)
+        {
+            return (Starsigns.FindAll(r => r.Name.ToLower() == starsignName.ToLower()).Count > 0);
         }
 
         /// <summary>

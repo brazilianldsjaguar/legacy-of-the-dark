@@ -19,6 +19,8 @@ namespace DikuSharp.Common.Characters
         public virtual Controller Controller { get; set; }
         public int AncestryID { get; set; }
         public virtual Ancestry Ancestry { get; set; }
+        public int StarsignID { get; set; }
+        public virtual Starsign Starsign { get; set; }
         public int RaceID { get; set; }
         public virtual Race Race { get; set; }
         public int ClassID { get; set; }

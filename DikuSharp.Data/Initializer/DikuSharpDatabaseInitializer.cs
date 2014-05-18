@@ -106,6 +106,23 @@ namespace DikuSharp.Data.Initializer
             };
             context.Ancestries.AddRange( ancestries );
 
+            List<Starsign> starsigns = new List<Starsign>()
+            {
+                new Starsign { Name = "The Artist"},
+                new Starsign { Name = "The Comet"},
+                new Starsign { Name = "The Fool"},
+                new Starsign { Name = "The Heirophant"},
+                new Starsign { Name = "The Hermit"},
+                new Starsign { Name = "The Hero"},
+                new Starsign { Name = "The Hospic"},
+                new Starsign { Name = "The Juggernaut"},
+                new Starsign { Name = "The Knight"},
+                new Starsign { Name = "The Pentagram"},
+                new Starsign { Name = "The Shadow"},
+                new Starsign { Name = "The Void"}
+            };
+            context.Starsigns.AddRange(starsigns);
+
             Area area = new Area( ) { ID = 1, Name = "MudCore", Author = "Frosk", LowLevel = 0, HighLevel = 0 };
             context.Areas.Add( area );
 

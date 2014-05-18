@@ -12,6 +12,7 @@
         CharacterCreationRace,
         CharacterCreationAncestry,
         CharacterCreationClass,
+        CharacterCreationStarsign,
         Playing,
     }
 }

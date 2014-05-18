@@ -78,6 +78,25 @@ namespace DikuSharp.Common
         }
 
         /// <summary>
+        /// Generate the starsign selection screen for chargen.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetNewCharacterStarsignScreen(List<Starsign> Starsigns)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(".------- Starsigns ------------------------------.");
+            sb.AppendLine("| Choose a starsign to play:                     |");
+            sb.AppendLine("+------------------------------------------------+");
+            foreach (Starsign starsign in Starsigns)
+            {
+                sb.AppendLine(string.Format("|  {0,-45} |", starsign.Name));
+            }
+            sb.Append("'------------------------------------------------'");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
         /// Generate the class selection screen for chargen.
         /// </summary>
         /// <returns></returns>

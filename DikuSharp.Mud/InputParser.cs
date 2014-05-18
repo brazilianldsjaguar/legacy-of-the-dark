@@ -53,6 +53,9 @@ namespace DikuSharp.Mud
                 case ConnectionState.CharacterCreationAncestry:
                     ParseCharacterCreationAncestry(connection, line);
                     break;
+                case ConnectionState.CharacterCreationStarsign:
+                    ParseCharacterCreationStarsign(connection, line);
+                    break;
                 case ConnectionState.Playing: //They're in the game
                     ParseCommand( connection, line );
                     break;
@@ -316,8 +319,9 @@ namespace DikuSharp.Mud
             else
             {
                 connection.Account.CurrentCharacter.Ancestry = Game.GetAncestry(line);
-                connection.Send(CharacterGeneration.GetNewCharacterAncestryScreen(Game.Ancestries));
-                connection.CurrentConnectionState = ConnectionState.CharacterCreationAncestry;
+
+                connection.Send(CharacterGeneration.GetNewCharacterStarsignScreen(Game.Starsigns));
+                connection.CurrentConnectionState = ConnectionState.CharacterCreationStarsign;
             }
         }
 
@@ -337,10 +341,31 @@ namespace DikuSharp.Mud
             else
             {
                 connection.Account.CurrentCharacter.Class = Game.GetClass( line );
-                connection.Send( RoomLogic.GetRoomInformation( connection.CurrentRoom, connection.Account.CurrentCharacter ) );
-                connection.CurrentConnectionState = ConnectionState.Playing;
+                connection.Send(CharacterGeneration.GetNewCharacterAncestryScreen(Game.Ancestries));
+                connection.CurrentConnectionState = ConnectionState.CharacterCreationAncestry;
             }
 
+        }
+
+        /// <summary>
+        /// Parses input from ancestry selection in chargen.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="line"></param>
+        private static void ParseCharacterCreationStarsign(PlayerConnection connection, string line)
+        {
+            //check to see if the Ancestry even is an option
+            if (!Game.StarsignExists(line))
+            {
+                connection.Send("That's not a valid Starsign option.");
+                connection.Send(CharacterGeneration.GetNewCharacterStarsignScreen(Game.Starsigns));
+            }
+            else
+            {
+                connection.Account.CurrentCharacter.Starsign = Game.GetStarsign(line);
+                connection.Send(RoomLogic.GetRoomInformation(connection.CurrentRoom, connection.Account.CurrentCharacter));
+                connection.CurrentConnectionState = ConnectionState.Playing;
+            }
         }
 
         /// <summary>
