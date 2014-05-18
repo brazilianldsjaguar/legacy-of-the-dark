@@ -15,7 +15,7 @@ namespace DikuSharp.Common.Characters
         public string Description { get; set; }
         public int RoomID { get; set; }
         public virtual Room CurrentRoom { get; set; }
-        public int ControllerID { get; set; }
+        public int? ControllerID { get; set; }
         public virtual Controller Controller { get; set; }
         public int AncestryID { get; set; }
         public virtual Ancestry Ancestry { get; set; }

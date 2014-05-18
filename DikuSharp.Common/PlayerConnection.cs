@@ -58,9 +58,9 @@ namespace DikuSharp.Common
         public void Send( string message )
         {
             //only colorize if they've got an active character
-            PlayerController controller = (PlayerController)CurrentCharacter.Controller;
             if ( Account != null && Account.CurrentCharacter != null )
             {
+                PlayerController controller = (PlayerController)CurrentCharacter.Controller;
                 message = Colorizer.Colorize( message, controller.ConfigColor );
             }
             Writer.WriteLine( message );

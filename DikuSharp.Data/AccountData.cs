@@ -76,7 +76,9 @@ namespace DikuSharp.Data
             //Just some defaults to satisfy foreign keys
             pc.Class = ClassData.GetDatabase( ).Classes.FirstOrDefault( );
             pc.Race = RaceData.GetDatabase( ).Races.FirstOrDefault( );
+            pc.Ancestry = AncestryData.GetDatabase( ).Ancestries.FirstOrDefault( );
             pc.CurrentRoom = BaseData.GetDatabase( ).Rooms.FirstOrDefault( );
+            pc.Controller = new PlayerController( ) { Account = account };
             account.Characters.Add( pc );
             BaseData.GetDatabase( ).SaveChanges( );
             return pc;

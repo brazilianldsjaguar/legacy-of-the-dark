@@ -21,7 +21,7 @@ namespace DikuSharp.Commands.Common
 
         public override void Do( object source, List<string> target )
         {
-            if ( source is Controller )
+            if ( source is Character )
             {
                 Character ch = source as Character;
                 PlayerController pc = (PlayerController)ch.Controller;
