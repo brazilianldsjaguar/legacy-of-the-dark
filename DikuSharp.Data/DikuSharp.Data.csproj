@@ -60,6 +60,7 @@
     <Compile Include="AncestryData.cs" />
     <Compile Include="ClassData.cs" />
     <Compile Include="DikuSharpDatabase.cs" />
+    <Compile Include="Initializer\DikuSharpDatabaseInitializer.cs" />
     <Compile Include="RaceData.cs" />
     <Compile Include="ServerConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

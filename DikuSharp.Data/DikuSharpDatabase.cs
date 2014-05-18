@@ -2,6 +2,7 @@
 using DikuSharp.Common.Areas;
 using DikuSharp.Common.Characters;
 using DikuSharp.Common.Items;
+using DikuSharp.Data.Initializer;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,7 @@ namespace DikuSharp.Data
             : base( "DikuSharpDatabase" )
         {
             //Database.SetInitializer<DikuSharpDatabase>( new MigrateDatabaseToLatestVersion<DikuSharpDatabase, Migrations.Configuration>( ) );
-            Database.SetInitializer<DikuSharpDatabase>( new DropCreateDatabaseAlways<DikuSharpDatabase>( ) );
+            Database.SetInitializer<DikuSharpDatabase>( new DikuSharpDatabaseInitializer( ) );
             
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine( s );
         }
