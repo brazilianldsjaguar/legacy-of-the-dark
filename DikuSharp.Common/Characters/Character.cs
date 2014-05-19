@@ -26,6 +26,42 @@ namespace DikuSharp.Common.Characters
         public int ClassID { get; set; }
         public virtual Class Class { get; set; }
         public virtual ICollection<Item> Items { get; set; }
+        public virtual IList<Attribute> Attributes { get; set; }
+
+        public Attribute Strength
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Strength ); }
+        }
+
+        public Attribute Dexterity
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Dexterity ); }
+        }
+
+        public Attribute Constituion
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Constituion ); }
+        }
+
+        public Attribute Intelligence
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Intelligence ); }
+        }
+
+        public Attribute Wisdom
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Wisdom ); }
+        }
+
+        public Attribute Charisma
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Charisma ); }
+        }
+
+        public Attribute Luck
+        {
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Luck ); }
+        }
 
         /// <summary>
         /// Get a string representation of the character.
@@ -36,6 +72,32 @@ namespace DikuSharp.Common.Characters
             return Name;
         }
 
+        /// <summary>
+        /// Shortcut to send a message to a player. Will send nothing to non-player characters.
+        /// </summary>
+        /// <param name="message"></param>
+        public void Send( string message )
+        {
+            Type ControllerType = this.Controller.GetType( ).UnderlyingSystemType;
+            if ( ControllerType.Name == "PlayerController" )
+            {
+                PlayerController PC = (PlayerController)this.Controller;
+                if ( PC.IsPlaying )
+                {
+                    PC.Send( message );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Shortcut to send a format-message to character.
+        /// </summary>
+        /// <param name="formatMessage"></param>
+        /// <param name="args"></param>
+        public void Send( string formatMessage, object[ ] args )
+        {
+            this.Send( string.Format( formatMessage, args ) );
+        }
 
         /// <summary>
         /// Shortcut method to send a message to all the players in the current player's room

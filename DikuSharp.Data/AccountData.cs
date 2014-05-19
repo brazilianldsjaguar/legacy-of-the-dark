@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DikuSharp.Common;
-using DikuSharp.Common.Characters;
 using System.Xml.Serialization;
 using System.IO;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Data.SqlServerCe;
 using System.Data.Entity;
+using DikuSharp.Common;
+using DikuSharp.Common.Characters;
 
 namespace DikuSharp.Data
 {
@@ -80,6 +80,17 @@ namespace DikuSharp.Data
             pc.Starsign = StarsignData.GetDatabase( ).Starsigns.FirstOrDefault();
             pc.CurrentRoom = BaseData.GetDatabase( ).Rooms.FirstOrDefault( );
             pc.Controller = new PlayerController( ) { Account = account };
+            //Populate the default attributes
+            pc.Attributes = new List<DikuSharp.Common.Characters.Attribute>( ) 
+            {
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Strength, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Dexterity, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Constituion, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Intelligence, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Wisdom, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Charisma, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Luck, Value = 5 },
+            };
             account.Characters.Add( pc );
             BaseData.GetDatabase( ).SaveChanges( );
             return pc;

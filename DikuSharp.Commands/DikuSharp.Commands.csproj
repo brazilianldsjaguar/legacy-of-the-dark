@@ -46,6 +46,7 @@
     <Compile Include="Common\Config.cs" />
     <Compile Include="Common\Look.cs" />
     <Compile Include="Common\Save.cs" />
+    <Compile Include="Common\Score.cs" />
     <Compile Include="Communication\Say.cs" />
     <Compile Include="Connection\Logout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
