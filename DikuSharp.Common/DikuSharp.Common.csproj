@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Coordinate.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Starsign.cs" />
     <Compile Include="CharacterGeneration.cs" />
@@ -76,6 +78,9 @@
     <Compile Include="Characters\Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Room.cs" />
+    <Compile Include="Tiles\Tile.cs" />
+    <Compile Include="Tiles\doorTile.cs" />
+    <Compile Include="Tiles\windowTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

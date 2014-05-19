@@ -125,27 +125,27 @@ namespace DikuSharp.Data.Initializer
 
             List<Material> materials = new List<Material> 
             { 
-                new Material { Name = "GRASS", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 1 },
-                new Material { Name ="DIRT", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 2 },
-                new Material { Name ="ROCK", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 3 },
-                new Material { Name ="SAND", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 4 },
-                new Material { Name ="WOOD", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 5 },
-                new Material { Name ="STONE", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 6 },
-                new Material { Name ="OLDWOOD", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 7 },
-                new Material { Name ="GLASS", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 8 },
-                new Material { Name ="COPPER", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 9 },
-                new Material { Name ="IRON", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 10 },
-                new Material { Name ="STEEL", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 11 },
-                new Material { Name ="SILVER", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 12 },
-                new Material { Name ="GOLD", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 13 },
-                new Material { Name ="FLESH", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 14 },
-                new Material { Name ="SKIN", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 15 },
-                new Material { Name ="BONE", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 16 },
-                new Material { Name ="FUR", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 17 },
-                new Material { Name ="LEATHER", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 18 },
-                new Material { Name ="SNOW", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 19 },
-                new Material { Name ="MITHRIL", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 20 },
-                new Material { Name ="ADAMANTIUM", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 21 }
+                new Material { Name = "GRASS", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 2,ID = 1 },
+                new Material { Name ="DIRT", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 2,ID = 2 },
+                new Material { Name ="ROCK", Hardness = 3, Health = 50, Sharpness = 1, ValueModifier = 0, Weight = 3,ID = 3 },
+                new Material { Name ="SAND", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 2,ID = 4 },
+                new Material { Name ="WOOD", Hardness = 2, Health = 50, Sharpness = 1, ValueModifier = 0, Weight = 2,ID = 5 },
+                new Material { Name ="STONE", Hardness = 3, Health = 50, Sharpness = 2, ValueModifier = 0, Weight = 3,ID = 6 },
+                new Material { Name ="OLDWOOD", Hardness = 1, Health = 50, Sharpness = 1, ValueModifier = 0, Weight = 9,ID = 7 },
+                new Material { Name ="GLASS", Hardness = 0, Health = 1, Sharpness = 2, ValueModifier = 0, Weight = 1,ID = 8 },
+                new Material { Name ="COPPER", Hardness = 3, Health = 25, Sharpness = 3, ValueModifier = 2, Weight = 2,ID = 9 },
+                new Material { Name ="IRON", Hardness = 3, Health = 50, Sharpness = 3, ValueModifier = 3, Weight = 3,ID = 10 },
+                new Material { Name ="STEEL", Hardness = 4, Health = 75, Sharpness = 4, ValueModifier = 4, Weight = 4,ID = 11 },
+                new Material { Name ="SILVER", Hardness = 3, Health =25, Sharpness = 3, ValueModifier = 5, Weight = 2,ID = 12 },
+                new Material { Name ="GOLD", Hardness = 2, Health =50, Sharpness = 1, ValueModifier = 6, Weight = 2,ID = 13 },
+                new Material { Name ="FLESH", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 1,ID = 14 },
+                new Material { Name ="SKIN", Hardness = 0, Health = 25, Sharpness = 0, ValueModifier = 0, Weight = 1,ID = 15 },
+                new Material { Name ="BONE", Hardness = 2, Health = 50, Sharpness = 2, ValueModifier = 0, Weight = 1,ID = 16 },
+                new Material { Name ="FUR", Hardness = 1, Health = 25, Sharpness = 0, ValueModifier = 0, Weight = 1,ID = 17 },
+                new Material { Name ="LEATHER", Hardness = 2, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 1,ID = 18 },
+                new Material { Name ="SNOW", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 2,ID = 19 },
+                new Material { Name ="MITHRIL", Hardness = 4, Health = 75, Sharpness = 4, ValueModifier = 8, Weight = 2,ID = 20 },
+                new Material { Name ="ADAMANTIUM", Hardness = 5, Health = 100, Sharpness = 5, ValueModifier = 10, Weight = 2,ID = 21 }
                 
             };
             context.Materials.AddRange(materials);
