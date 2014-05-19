@@ -26,6 +26,7 @@ namespace DikuSharp.Mud
         public static List<Starsign> Starsigns = StarsignData.LoadStarsigns();
         public static List<Character> PlayerCharacters = Game.GetPlayerCharacters( );
         public static List<Material> Materials = MaterialData.LoadMaterials();
+        public static List<Map> Maps = MapData.LoadMaps();
         public static List<ICommand> Commands { get { return commands; } }
         private static List<ICommand> commands = Game.GetCommands( ).OrderBy( x => x.Priority ).ToList( );
         
@@ -123,6 +124,16 @@ namespace DikuSharp.Mud
         internal static Class GetClass( string className )
         {
             return Classes.Find( c => c.Name.ToLower( ) == className.ToLower( ) );
+        }
+
+        /// <summary>
+        /// Get a specific material from the list of materials, based on a materialname string.
+        /// </summary>
+        /// <param name="className">A string representing the name of the material</param>
+        /// <returns>A <see cref="Class"/> object</returns>
+        public static Material GetMaterial(string materialName)
+        {
+            return Materials.Find(c => c.Name.ToLower() == materialName.ToLower());
         }
 
         /// <summary>

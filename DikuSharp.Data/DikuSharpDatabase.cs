@@ -34,6 +34,7 @@ namespace DikuSharp.Data
         public DbSet<Starsign> Starsigns { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<Map> Maps { get; set; }
 
         protected override void OnModelCreating( DbModelBuilder modelBuilder )
         {
