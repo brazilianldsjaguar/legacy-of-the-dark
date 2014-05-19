@@ -45,6 +45,7 @@
     <Compile Include="Logic\AccountLogic.cs" />
     <Compile Include="Logic\PlayerCharacterLogic.cs" />
     <Compile Include="Logic\RoomLogic.cs" />
+    <Compile Include="MapGen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

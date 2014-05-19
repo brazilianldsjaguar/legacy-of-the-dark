@@ -125,6 +125,7 @@ namespace DikuSharp.Data.Initializer
 
             List<Material> materials = new List<Material> 
             { 
+                new Material { Name ="AIR", Hardness = 0, Health = 0, Sharpness = 0, ValueModifier = 0, Weight = 0,ID = 0},
                 new Material { Name = "GRASS", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 2,ID = 1 },
                 new Material { Name ="DIRT", Hardness = 0, Health = 50, Sharpness = 0, ValueModifier = 0, Weight = 2,ID = 2 },
                 new Material { Name ="ROCK", Hardness = 3, Health = 50, Sharpness = 1, ValueModifier = 0, Weight = 3,ID = 3 },
@@ -149,6 +150,12 @@ namespace DikuSharp.Data.Initializer
                 
             };
             context.Materials.AddRange(materials);
+
+            List<Map> maps = new List<Map> 
+            { 
+                new Map {Name = "Basic Map"}
+            };
+            context.Maps.AddRange(maps);
 
             Area area = new Area( ) { ID = 1, Name = "MudCore", Author = "Frosk", LowLevel = 0, HighLevel = 0 };
             context.Areas.Add( area );

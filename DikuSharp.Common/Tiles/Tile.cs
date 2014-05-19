@@ -10,5 +10,6 @@ namespace DikuSharp.Common.Tiles
     {
         public int Health { get; set; }
         public Material Material { get; set; }
+        public bool Enabled { get; set; }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MapGenTypes.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Starsign.cs" />
     <Compile Include="CharacterGeneration.cs" />
