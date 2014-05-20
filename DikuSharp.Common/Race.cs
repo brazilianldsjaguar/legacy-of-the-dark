@@ -18,6 +18,12 @@ namespace DikuSharp.Common
             return Name;
         }
 
+        public virtual IList<Common.Characters.AttributeBonus> AttributeBonus { get; set; }
+        public virtual IList<Common.Characters.ResistBonus> ResistBonus { get; set; }
+
+        public int expBonus { get; set; }
+        public virtual IList<Common.Characters.Language> racialLanguage { get; set; }
+
         #region Equal Overrides
 
         public override bool Equals( object obj )
