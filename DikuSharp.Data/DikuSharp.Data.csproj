@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountData.cs" />
+    <Compile Include="LanguageData.cs" />
     <Compile Include="MapData.cs" />
     <Compile Include="MaterialData.cs" />
     <Compile Include="StarsignData.cs" />

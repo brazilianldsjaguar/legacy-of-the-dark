@@ -91,6 +91,23 @@ namespace DikuSharp.Data
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Charisma, Value = 5 },
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Luck, Value = 5 },
             };
+            //Populate the default resists
+            pc.Resists = new List<DikuSharp.Common.Characters.Resist>() 
+            {
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Acid, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Air, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Blunt, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Cold, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Crystal, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Earth, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Electricity, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Fire, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Nature, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Pierce, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Poison, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Slash, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Magic, Value = 0 },
+            };
             account.Characters.Add( pc );
             BaseData.GetDatabase( ).SaveChanges( );
             return pc;

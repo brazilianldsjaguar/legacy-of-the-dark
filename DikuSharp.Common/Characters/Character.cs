@@ -27,6 +27,7 @@ namespace DikuSharp.Common.Characters
         public virtual Class Class { get; set; }
         public virtual ICollection<Item> Items { get; set; }
         public virtual IList<Attribute> Attributes { get; set; }
+        public virtual IList<Resist> Resists { get; set; }
 
         public Attribute Strength
         {
@@ -61,6 +62,58 @@ namespace DikuSharp.Common.Characters
         public Attribute Luck
         {
             get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Luck ); }
+        }
+        public Resist Fire 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Fire); }
+        }
+        public Resist Cold 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Cold); }
+        }
+        public Resist Electricity 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Electricity); }
+        }
+        public Resist Air 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Air); }
+        }
+        public Resist Blunt 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Blunt); }
+        }
+        public Resist Pierce 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Pierce); }
+        }
+        public Resist Slash 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Slash); }
+        }
+        public Resist Acid 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Acid); }
+        }
+        public Resist Poison 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Poison); }
+        }
+        public Resist Nature 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Nature); }
+        }
+        public Resist Crystal 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Crystal); }
+        }
+        public Resist Earth 
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Earth); }
+        }
+        public Resist Magic
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Magic); }
         }
 
         /// <summary>
