@@ -20,6 +20,7 @@ namespace DikuSharp.Common.Characters
         Nature,
         Crystal,
         Earth,
-        Magic
+        Magic,
+        Pillar
     }
 }

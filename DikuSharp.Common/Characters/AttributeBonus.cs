@@ -6,10 +6,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DikuSharp.Common.Characters
 {
+    
     public class AttributeBonus
     {
         [Key]
         public int ID { get; set; }
+        public AttributeType Type { get; set; }
         public int BonusAmount { get; set; }
     }
 }

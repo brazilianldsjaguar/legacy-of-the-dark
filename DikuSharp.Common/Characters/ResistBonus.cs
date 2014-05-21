@@ -12,6 +12,7 @@ namespace DikuSharp.Common.Characters
     {
         [Key]
         public int ID { get; set; }
+        public ResistType Type { get; set; }
         public int BonusAmount { get; set; }
     }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using DikuSharp.Common;
 using DikuSharp.Common.Areas;
+using DikuSharp.Common.Characters;
 
 namespace DikuSharp.Data.Initializer
 {
@@ -34,59 +35,68 @@ namespace DikuSharp.Data.Initializer
 
             List<Common.Characters.Language> languages = new List<Common.Characters.Language> 
             { 
-               new Common.Characters.Language { Name = "common", ID = 1},
-               new Common.Characters.Language { Name = "elvish", ID = 2},
-               new Common.Characters.Language { Name = "dwarven", ID = 3},
-               new Common.Characters.Language { Name = "ogre", ID = 4},
-               new Common.Characters.Language { Name = "orcish", ID = 5},
-               new Common.Characters.Language { Name = "trollese", ID = 6},
-               new Common.Characters.Language { Name = "halfling", ID = 7},
-               new Common.Characters.Language { Name = "gnomish", ID = 8},
-               new Common.Characters.Language { Name = "phasian", ID = 9},
-               new Common.Characters.Language { Name = "gerpish", ID = 10},
-               new Common.Characters.Language { Name = "animal", ID = 11}
+               new Language { Name = "common", ID = 1},
+               new Language { Name = "elvish", ID = 2},
+               new Language { Name = "dwarven", ID = 3},
+               new Language { Name = "ogre", ID = 4},
+               new Language { Name = "orcish", ID = 5},
+               new Language { Name = "trollese", ID = 6},
+               new Language { Name = "halfling", ID = 7},
+               new Language { Name = "gnomish", ID = 8},
+               new Language { Name = "phasian", ID = 9},
+               new Language { Name = "gerpish", ID = 10},
+               new Language { Name = "animal", ID = 11}
             };
             context.Languages.AddRange(languages);
+
+            List<Affect> affects = new List<Affect> 
+            { 
+                new Affect {ID = 1, Name = "innatePillar", baseDuration = -1, basePotency = 0, baseRange = 0,Dispellable = false},
+                new Affect {ID = 1, Name = "innateTelepathy", baseDuration = -1, basePotency = 0, baseRange = 0, Dispellable = false},
+                new Affect {ID = 1, Name = "innateInfravision", baseDuration = -1, basePotency = 0, baseRange = 0, Dispellable = false}
+            };
+            context.Affects.AddRange(affects);
+
             List<Race> races = new List<Race> 
             {
-                new Race { Name = "Imperial Human", ID = 1,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Phasian", ID = 2,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Zion", ID = 3,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Gray Dwarf", ID = 4,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Gerp", ID = 5,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Gully Dwarf", ID = 6,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Tinker Dwarf", ID = 7,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Mountain Dwarf", ID = 8,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Wood Elf", ID = 9,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Wild Elf", ID = 10,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Moon Elf", ID = 11,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Dark Elf", ID = 12,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Aquatic Elf", ID = 13,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Winged Elf", ID = 14,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Half-Elf", ID = 15,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Pixie", ID = 16,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Nixie", ID = 17,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Succubus", ID = 18,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Dryad", ID = 19,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Grig", ID = 20,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Forest Gnome", ID = 21,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Rock Gnome", ID = 22,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Deep Gnome", ID = 23,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Imperial Halfling", ID = 24,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Feral Halfling", ID = 25,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Meadow Halfling", ID = 26,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Kobold", ID = 27,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Orc", ID = 28,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Ogre", ID = 29,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Goblin", ID = 30,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Half-Orc", ID = 31,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Forest Troll", ID = 32,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Desert Troll", ID = 33,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Mountain Troll", ID = 34,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Minotaur", ID = 35,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Lizardman", ID = 36,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Satyr", ID = 37,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
-                new Race { Name = "Ettercap", ID = 38,racialLanguage = new List<Common.Characters.Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<Common.Characters.AttributeBonus>(), ResistBonus  = new List<Common.Characters.ResistBonus>() },
+                new Race { Name = "Imperial Human", ID = 1,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>(),expBonus = 10 },
+                new Race { Name = "Phasian", ID = 2,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>(){affects.Find( a => a.Name == "innatePillar")},expBonus = 5},
+                new Race { Name = "Zion", ID = 3,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(){new AttributeBonus{Type = AttributeType.Constitution,BonusAmount = -1},new AttributeBonus{Type = AttributeType.Wisdom,BonusAmount = 1} }, ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>(){affects.Find( a => a.Name == "innateTelepathy")} },
+                new Race { Name = "Gray Dwarf", ID = 4,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" ),languages.Find( a => a.Name == "dwarven" )},AttributeBonus = new List<AttributeBonus>(){new AttributeBonus{Type = AttributeType.Strength, BonusAmount = 2},new AttributeBonus{Type = AttributeType.Constitution, BonusAmount = 3},new AttributeBonus{Type = AttributeType.Charisma, BonusAmount = -4},new AttributeBonus{Type = AttributeType.Dexterity, BonusAmount = -1}}, ResistBonus  = new List<ResistBonus>(){new ResistBonus {Type = ResistType.Poison, BonusAmount = 20},new ResistBonus {Type = ResistType.Magic, BonusAmount = 5}}, racialAffects = new List<Affect>(){affects.Find( a => a.Name == "innateInfravision")} },
+                new Race { Name = "Gerp", ID = 5,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Gully Dwarf", ID = 6,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Tinker Dwarf", ID = 7,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Mountain Dwarf", ID = 8,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Wood Elf", ID = 9,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Wild Elf", ID = 10,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Moon Elf", ID = 11,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Dark Elf", ID = 12,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Aquatic Elf", ID = 13,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Winged Elf", ID = 14,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Half-Elf", ID = 15,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Pixie", ID = 16,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Nixie", ID = 17,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Succubus", ID = 18,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Dryad", ID = 19,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Grig", ID = 20,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Forest Gnome", ID = 21,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Rock Gnome", ID = 22,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Deep Gnome", ID = 23,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Imperial Halfling", ID = 24,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Feral Halfling", ID = 25,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Meadow Halfling", ID = 26,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Kobold", ID = 27,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Orc", ID = 28,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Ogre", ID = 29,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Goblin", ID = 30,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Half-Orc", ID = 31,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Forest Troll", ID = 32,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Desert Troll", ID = 33,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Mountain Troll", ID = 34,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Minotaur", ID = 35,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Lizardman", ID = 36,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Satyr", ID = 37,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
+                new Race { Name = "Ettercap", ID = 38,racialLanguage = new List<Language>(){languages.Find( a => a.Name == "common" )},AttributeBonus = new List<AttributeBonus>(), ResistBonus  = new List<ResistBonus>(), racialAffects = new List<Affect>() },
             };
             context.Races.AddRange( races );
 
@@ -165,6 +175,8 @@ namespace DikuSharp.Data.Initializer
                 
             };
             context.Materials.AddRange(materials);
+
+            
 
             List<Map> maps = new List<Map> 
             { 

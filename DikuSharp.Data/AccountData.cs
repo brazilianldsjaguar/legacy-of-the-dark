@@ -85,7 +85,7 @@ namespace DikuSharp.Data
             {
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Strength, Value = 5 },
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Dexterity, Value = 5 },
-                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Constituion, Value = 5 },
+                new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Constitution, Value = 5 },
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Intelligence, Value = 5 },
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Wisdom, Value = 5 },
                 new DikuSharp.Common.Characters.Attribute( ) { Bonus = new AttributeBonus( ) { BonusAmount = 0 }, Type = AttributeType.Charisma, Value = 5 },
@@ -107,6 +107,7 @@ namespace DikuSharp.Data
                 new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Poison, Value = 0 },
                 new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Slash, Value = 0 },
                 new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Magic, Value = 0 },
+                new DikuSharp.Common.Characters.Resist( ) { Bonus = new ResistBonus( ) { BonusAmount = 0 }, Type = ResistType.Pillar, Value = 0 },
             };
             account.Characters.Add( pc );
             BaseData.GetDatabase( ).SaveChanges( );

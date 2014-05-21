@@ -10,7 +10,7 @@ namespace DikuSharp.Common.Characters
     {
         Strength,
         Dexterity,
-        Constituion,
+        Constitution,
         Intelligence,
         Wisdom,
         Charisma,

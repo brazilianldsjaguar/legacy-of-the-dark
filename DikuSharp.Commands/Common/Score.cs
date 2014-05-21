@@ -21,7 +21,7 @@ namespace DikuSharp.Commands.Common
                 sb.AppendLine( "#G::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#x" );
                 sb.AppendLine( string.Format( "#G      Strength: #x{0,-3}{1}", ch.Strength.TotalValue,     " ".PadRight( 51 ) ) );
                 sb.AppendLine( string.Format( "#G     Dexterity: #x{0,-3}{1}", ch.Dexterity.TotalValue,    " ".PadRight( 51 ) ) );
-                sb.AppendLine( string.Format( "#G   Constituion: #x{0,-3}{1}", ch.Constituion.TotalValue,  " ".PadRight( 51 ) ) );
+                sb.AppendLine( string.Format( "#G   Constituion: #x{0,-3}{1}", ch.Constitution.TotalValue,  " ".PadRight( 51 ) ) );
                 sb.AppendLine( string.Format( "#G  Intelligence: #x{0,-3}{1}", ch.Intelligence.TotalValue, " ".PadRight( 51 ) ) );
                 sb.AppendLine( string.Format( "#G        Wisdom: #x{0,-3}{1}", ch.Wisdom.TotalValue,       " ".PadRight( 51 ) ) );
                 sb.AppendLine( string.Format( "#G      Charisma: #x{0,-3}{1}", ch.Charisma.TotalValue,     " ".PadRight( 51 ) ) );

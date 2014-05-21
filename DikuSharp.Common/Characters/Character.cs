@@ -39,9 +39,9 @@ namespace DikuSharp.Common.Characters
             get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Dexterity ); }
         }
 
-        public Attribute Constituion
+        public Attribute Constitution
         {
-            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Constituion ); }
+            get { return ( (List<Attribute>)Attributes ).Find( a => a.Type == AttributeType.Constitution ); }
         }
 
         public Attribute Intelligence
@@ -114,6 +114,10 @@ namespace DikuSharp.Common.Characters
         public Resist Magic
         {
             get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Magic); }
+        }
+        public Resist Pillar
+        {
+            get { return ((List<Resist>)Resists).Find(a => a.Type == ResistType.Pillar); }
         }
 
         /// <summary>

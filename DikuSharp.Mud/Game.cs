@@ -27,6 +27,7 @@ namespace DikuSharp.Mud
         public static List<Character> PlayerCharacters = Game.GetPlayerCharacters( );
         public static List<Material> Materials = MaterialData.LoadMaterials();
         public static List<Map> Maps = MapData.LoadMaps();
+        public static List<Affect> Affects = AffectData.LoadAffects();
         public static List<ICommand> Commands { get { return commands; } }
         private static List<ICommand> commands = Game.GetCommands( ).OrderBy( x => x.Priority ).ToList( );
         

@@ -35,6 +35,7 @@ namespace DikuSharp.Data
         public DbSet<Class> Classes { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<Map> Maps { get; set; }
+        public DbSet<Affect> Affects { get; set; }
         public DbSet<Language> Languages { get; set; }
 
         protected override void OnModelCreating( DbModelBuilder modelBuilder )

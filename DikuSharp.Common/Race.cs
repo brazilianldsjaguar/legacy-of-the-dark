@@ -23,6 +23,7 @@ namespace DikuSharp.Common
 
         public int expBonus { get; set; }
         public virtual IList<Common.Characters.Language> racialLanguage { get; set; }
+        public virtual IList<Common.Characters.Affect> racialAffects { get; set; }
 
         #region Equal Overrides
 
