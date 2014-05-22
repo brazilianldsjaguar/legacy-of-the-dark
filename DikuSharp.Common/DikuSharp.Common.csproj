@@ -87,6 +87,7 @@
     <Compile Include="Characters\Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Room.cs" />
+    <Compile Include="staticholder.cs" />
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Tiles\doorTile.cs" />
     <Compile Include="Tiles\windowTile.cs" />

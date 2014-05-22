@@ -57,7 +57,9 @@ namespace DikuSharp.Mud
                     ParseCharacterCreationStarsign(connection, line);
                     break;
                 case ConnectionState.Playing: //They're in the game
-                    ParseCommand( connection, line );
+                    Console.WriteLine("Got input to parse in playing, line=" + line);
+                    connection.controller.Command = line; //Changed this so mainTick handles commands after creation.
+                    //ParseCommand( connection, line );
                     break;
                 default:
                     break;
@@ -71,9 +73,11 @@ namespace DikuSharp.Mud
         /// <param name="line"></param>
         private static void ParseConnected( PlayerConnection connection, string line )
         {
+
             //check if the name they entered is even valid
             if ( !AccountLogic.IsValidAccountName( line ) )
             {
+                
                 connection.Send( "That's not a valid name for an account!" );
                 connection.Send( "Account names should be from 4-15 characters long and contain only letters." );
                 connection.Send( "Please enter another account name:" );
@@ -219,7 +223,19 @@ namespace DikuSharp.Mud
                 if ( AccountLogic.CharacterExists( connection.Account, line ) )
                 {
                     Character pc = AccountLogic.FindCharacter( connection.Account, c => c.Name.ToLower( ) == line.ToLower( ) );
-                    connection.Account.CurrentCharacter = pc;                    
+                    connection.Account.CurrentCharacter = pc;
+                    if (connection.controller != null)
+                    {
+                        pc.Controller = connection.controller;
+                    }
+                    else
+                    {
+                        PlayerController datController = new PlayerController();
+                        pc.Controller = datController;
+                        connection.controller = datController;
+                        datController.Account = connection.Account;
+                    }
+                    
                     //just in case ...
                     if ( pc.CurrentRoom == null )
                     {
@@ -230,7 +246,9 @@ namespace DikuSharp.Mud
                     //    RoomLogic.MoveCharacterToRoom( pc, null, pc.CurrentRoom );
                     //}
                     connection.Send( RoomLogic.GetRoomInformation( pc.CurrentRoom, pc ) );
-                    connection.CurrentConnectionState = ConnectionState.Playing;                    
+                    connection.CurrentConnectionState = ConnectionState.Playing;
+                    
+                    staticholder.MudConnections.Add(connection);
                 }
                 else
                 {
@@ -276,6 +294,7 @@ namespace DikuSharp.Mud
                     RoomLogic.MoveCharacterToRoom( pc, null, Game.GetRoomById( int.Parse( ServerConfiguration.ReadAppConfig( "StartingRoom" ) ) ) );                    
                     //connection.Account.Characters.Add( pc );
                     connection.Account.CurrentCharacter = pc;
+                    pc.Controller = connection.controller;
                     connection.Send( CharacterGeneration.GetNewCharacterRaceScreen( Game.Races ) );
                     connection.CurrentConnectionState = ConnectionState.CharacterCreationRace;
                 }
@@ -363,8 +382,21 @@ namespace DikuSharp.Mud
             else
             {
                 connection.Account.CurrentCharacter.Starsign = Game.GetStarsign(line);
+                if (connection.controller != null)
+                {
+                    connection.CurrentCharacter.Controller = connection.controller;
+                }
+                else
+                {
+                    PlayerController datController = new PlayerController();
+                    datController.Account = connection.Account;
+                    connection.CurrentCharacter.Controller = datController;
+                    connection.controller = datController;
+                }
+                
                 connection.Send(RoomLogic.GetRoomInformation(connection.CurrentRoom, connection.Account.CurrentCharacter));
                 connection.CurrentConnectionState = ConnectionState.Playing;
+                staticholder.MudConnections.Add(connection);
             }
         }
 
@@ -379,6 +411,7 @@ namespace DikuSharp.Mud
                 return;
 
             var args = GetArgsFromInput( line, new char[ ] { ' ' } );
+            Console.WriteLine("ParseCommand got args=" + args[0]);
             
             bool commandFound = false;
 
@@ -395,10 +428,10 @@ namespace DikuSharp.Mud
                     }
                     catch( Exception ex )
                     {
-                        Console.WriteLine( "ERROR :: Could not interpret command." );
-                        Console.WriteLine( ex.Message );
+                       Console.WriteLine( "ERROR :: Could not interpret command." );
+                       Console.WriteLine( ex.Message );
                         commandFound = false;
-                    }
+                    } //THIS above often covers OTHER kind of errors
                     break;
                 }
             }
@@ -407,6 +440,11 @@ namespace DikuSharp.Mud
             {
                 connection.Send( "Huh?" );
             }
+            if (connection.controller != null)
+            {
+                connection.controller.Command = "";
+            }
+            
         }
 
         /// <summary>

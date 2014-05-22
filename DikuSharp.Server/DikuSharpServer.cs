@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Threading;
+using System.Collections.Generic;
+
 
 namespace DikuSharp.Server
 {
     public class DikuSharpServer
     {
         private static TcpListener listener;
+        
 
         static void Main( string[ ] args )
         {
@@ -26,7 +29,6 @@ namespace DikuSharp.Server
                 Console.WriteLine( "Awaiting connection ... " );
                 TcpClient client = listener.AcceptTcpClient( );
                 Console.WriteLine( "Connection: {0}", client.Client.RemoteEndPoint.ToString( ) );
-
                 new MudConnection( client );
             }
         }

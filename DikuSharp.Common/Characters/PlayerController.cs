@@ -11,9 +11,10 @@ namespace DikuSharp.Common.Characters
     {
         public int AccountID { get; set; }
         public virtual Account Account { get; set; }
+        
         //Config flags
         public bool ConfigColor { get; set; }
-
+        
         [NotMapped]
         public bool IsPlaying
         {

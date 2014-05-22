@@ -24,6 +24,8 @@ namespace DikuSharp.Common
         public PlayerConnection CurrentConnection { get; set; }
         [NotMapped]
         public Character CurrentCharacter { get; set; }
+        [NotMapped]
+        public Character CurrentPlayerController { get; set; }
 
         #region Equal Overrides
 

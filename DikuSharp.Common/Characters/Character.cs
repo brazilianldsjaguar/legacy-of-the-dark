@@ -187,6 +187,7 @@ namespace DikuSharp.Common.Characters
         {
             this.SendToRoom(string.Format(formatMessage, args));
         }
+
         
         #region Equal Overrides
 

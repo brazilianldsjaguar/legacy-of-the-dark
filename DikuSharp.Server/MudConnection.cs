@@ -20,7 +20,6 @@ namespace DikuSharp.Server
         {
             _client = client;
             account = new PlayerConnection( _client );
-            
             new Thread( ClientLoop ).Start( );
         }
 

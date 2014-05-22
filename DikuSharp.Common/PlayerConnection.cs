@@ -18,7 +18,7 @@ namespace DikuSharp.Common
         public Account Account { get; set; }
         public StreamReader Reader { get; set; }
         public StreamWriter Writer { get; set; }
-
+        public PlayerController controller { get; set; }
 
         #region Shortcut properties
 
@@ -57,13 +57,37 @@ namespace DikuSharp.Common
 
         public void Send( string message )
         {
+            //CHANGED TO SEND TO BUFFER -arz
             //only colorize if they've got an active character
-            if ( Account != null && Account.CurrentCharacter != null )
+            Console.WriteLine("SENDING");
+
+            if (Account != null && Account.CurrentCharacter != null && CurrentCharacter.Controller != null)
             {
                 PlayerController controller = (PlayerController)CurrentCharacter.Controller;
-                message = Colorizer.Colorize( message, controller.ConfigColor );
+                message = Colorizer.Colorize(message, controller.ConfigColor);
+                CurrentCharacter.Controller.Buffer += message + Environment.NewLine;
+
             }
-            Writer.WriteLine( message );
+            else
+            {
+                Writer.WriteLine(message);
+                
+            }
+            
+            
+        }
+        public void BufferSend()
+        {
+            //IS NOW SENDER
+            Console.WriteLine("Sending Buffer...");
+            if (CurrentCharacter.Controller.Buffer != "")
+            {
+                Console.WriteLine("Writing(" + CurrentCharacter.Controller.Buffer);
+                Writer.WriteLine(CurrentCharacter.Controller.Buffer);
+                this.Flush();
+                CurrentCharacter.Controller.Buffer = "";
+            }
+            else { Console.WriteLine("Buffer Empty"); }
         }
 
         public void Send( string formatMessage, params object[ ] args )
@@ -73,6 +97,7 @@ namespace DikuSharp.Common
             //Send it to the other "send" so it can be colored
             Send( formattedMessage );
         }
+
 
         public void Flush( )
         {
