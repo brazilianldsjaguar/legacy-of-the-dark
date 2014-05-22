@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="GameConfiguration.cs" />
     <Compile Include="DikuSharpServer.cs" />
+    <Compile Include="mainTick.cs" />
     <Compile Include="MudConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

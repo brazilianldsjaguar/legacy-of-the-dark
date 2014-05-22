@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace DikuSharp.Server
 {
-    class DikuSharpServer
+    public class DikuSharpServer
     {
         private static TcpListener listener;
 
@@ -16,6 +17,10 @@ namespace DikuSharp.Server
             Common.Map newMap = new Common.Map();
             newMap = Mud.MapGen.BasicMapGeneration(Common.MapGenTypes.BasicGrass);
             Mud.Game.Maps[0] = newMap;
+            Console.WriteLine("Starting main server tick...");
+            maintick newMain = new maintick();
+            Thread newThread = new Thread(new ThreadStart(newMain.mainTick));
+            newThread.Start();
             while ( true )
             {
                 Console.WriteLine( "Awaiting connection ... " );
