@@ -36,7 +36,7 @@ namespace DikuSharp.Mud.Logic
                     continue;
                 }
 
-                sb.AppendLine( "#W" + ch.Name );
+                sb.AppendLine( "#W" + ch.Name + " the " + ch.Ancestry.ToString() + " " + ch.Race );
             }
             foreach ( Item item in room.Items )
             {
